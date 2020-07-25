@@ -1,6 +1,6 @@
 
 
-
+// mon objet personnage //
 var girl={
   x:0,
   y:0,
@@ -16,8 +16,8 @@ var girl={
 }
 var girlSprite;
 girlSp= new Image (); 
-girlSp.src = "sprite.png";
-
+girlSp.src = "images/sprite.png";
+// création des objets images//
 var obhtm ={
   x:100,
   y:400,
@@ -25,7 +25,7 @@ var obhtm ={
   height:150
 }
 var htm= new Image ();
-htm.src = "pain.png";
+htm.src = "images/pain.png";
 
 var obcss ={
   x:250,
@@ -34,7 +34,7 @@ var obcss ={
   height:150
 }
 var css= new Image ();
-css.src = "pain.png";
+css.src = "images/pain.png";
 
 var objs ={
   x:400,
@@ -43,7 +43,7 @@ var objs ={
   height:150
 }
 var js = new Image();
- js.src="pain.png";
+ js.src="images/pain.png";
 
 var obang = {
    x:550,
@@ -52,7 +52,7 @@ var obang = {
    height:150
  }
  var ang = new Image();
- ang.src="pain.png";
+ ang.src="images/pain.png";
 
  var obvue = {
    x:700,
@@ -61,7 +61,7 @@ var obang = {
    height:150
  }
  var vue = new Image();
- vue.src="pain.png";
+ vue.src="images/pain.png";
 
  var obps = {
    x:850,
@@ -70,7 +70,7 @@ var obang = {
    height:150
  }
 var ps = new Image();
-ps.src = "pain.png";
+ps.src = "images/pain.png";
 
 var score=0;
 var sound = document.getElementById("sound");
@@ -81,7 +81,7 @@ canvas.width=1000;
 canvas.heigth=500;
 
 var bg = new Image();
-bg.src = "tlo.png";
+bg.src = "images/tlo.png";
 // moving background i found on code on Cnavas  bootcamp of Adam Khoury 
 function Background (){
   this.x=0,
@@ -122,7 +122,7 @@ function animate (){
   cinqcollision();
   sixcollision();
 }window.onload=setInterval(animate,1000/10);
-
+// recouperation si clavier est appuyer et quand il est relacher//
 var keyclick = {};
   document.addEventListener ("keydown", function (e){
     keyclick[e.keyCode]=true;
@@ -132,7 +132,7 @@ var keyclick = {};
   document.addEventListener ("keyup", function (e){
     delete keyclick[e.keyCode];
   });
-
+// movement par clavier//
 function move (keyclick){
       if (39 in keyclick){
       if( girl.frameX<9) girl.frameX++;
@@ -140,20 +140,18 @@ function move (keyclick){
     };
      girl.dx+=girl.speed;
     }
-
-  if (37 in keyclick){
-    if( girl.frameY<9) girl.frameY++;
-   else{girl.frameY=0;
-   }; 
-     girl.dx-=girl.speed;
-   } 
-
   if (40 in keyclick){
     document.getElementById("up").style.display="inline";
   }else {
     document.getElementById("up").style.display="none";
   }
+  if (38 in keyclick){
+    document.getElementById("down").style.display="inline";
+  }else{
+   document.getElementById("down").style.display="none";
+   
   }
+  
  
   function collision  (){
    if (girl.dx<=(obhtm.x+5)&& obhtm.x <=(girl.dx+10)){
@@ -161,7 +159,10 @@ function move (keyclick){
       console.log('hit');
       score++;
       playsong();
-  }
+      function change(){
+      ctx.clearRect(100,300,75,150);
+      };
+  }change();
   }
   function deuxcollision (){
      if (girl.dx<=(obcss.x+5)&& obcss.x <=(girl.dx+10)){

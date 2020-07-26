@@ -84,7 +84,7 @@ canvas.heigth=500;
 
 var bg = new Image();
 bg.src = "images/tlo.png";
-// moving background i found on code on Cnavas  bootcamp of Adam Khoury 
+// moving background i found on code on Cnavas  bootcamp of Adam Khoury https://www.youtube.com/watch?v=pTCzinjyEgc 
 function Background (){
   this.x=0,
   this.y=0, 
@@ -98,6 +98,7 @@ function Background (){
   }
 }
 var background = new Background();
+var bgm=document.getElementById("bgm");
 
 function render(image,sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight){
   ctx.drawImage(image,sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight )
@@ -114,7 +115,7 @@ function animate (){
   ctx.drawImage(ps,850,300,75,150);
   ctx.font = "25px veranda";
   ctx.fillStyle="black";
-  ctx.fillText("Your score : "+ score, 750,50);
+  ctx.fillText("Ton score: "+ score, 750,50);
   render(girlSp,girl.width*girl.frameX,girl.heigth*girl.frameY, girl.width,girl.heigth,girl.dx,girl.dy,girl.width,girl.heigth);
   move(keyclick);
   collision();
@@ -123,7 +124,9 @@ function animate (){
   quatrecollision();
   cinqcollision();
   sixcollision();
-}var mika=window.onload=setInterval(animate,1000/10);
+  bgm.play();
+  
+}window.onload=setInterval(animate,1000/10);
 // recouperation si clavier est appuyer et quand il est relacher//
 var keyclick = {};
   document.addEventListener ("keydown", function (e){
@@ -142,7 +145,6 @@ if (39 in keyclick){
     };
      girl.dx+=girl.speed;
     }
-
 if (40 in keyclick){
     document.getElementById("up").style.display="inline";
   }else {
@@ -154,15 +156,12 @@ if (38 in keyclick){
   document.getElementById("down").style.display="none";
 }
 }
- 
 
-  function collision  (){
+ function collision  (){
    if (girl.dx<=(obhtm.x+5)&& obhtm.x <=(girl.dx+10)){
       document.getElementById("ht").style.display="block";
-      console.log('hit');
       score++;
       playsong();
-      
   }
   }
   function deuxcollision (){
@@ -173,7 +172,7 @@ if (38 in keyclick){
   }
   }
  function troiscollision (){
-    if (girl.dx<=(objs.x+5)&&objs.x<=(girl.dx+10)){
+    if (girl.dx<=(objs.x+5)&&objs.x<=(girl.dx+11)){
       document.getElementById("js").style.display="block";
       score++;
       playsong();
@@ -201,9 +200,11 @@ if (38 in keyclick){
       gameover();
   }
   }
+  // hit baguette
   function playsong(){
       sound.play()
   }
+  
  function gameover (){
    if (score>=6){
      document.getElementById("cv").style.display="block";

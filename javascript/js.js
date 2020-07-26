@@ -83,7 +83,7 @@ canvas.width=1000;
 canvas.heigth=500;
 
 var bg = new Image();
-bg.src = "images/tlo.png";
+bg.src = "images/citybac.png";
 // moving background i found on code on Cnavas  bootcamp of Adam Khoury https://www.youtube.com/watch?v=pTCzinjyEgc 
 function Background (){
   this.x=0,

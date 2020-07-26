@@ -72,9 +72,11 @@ var obang = {
 var ps = new Image();
 ps.src = "images/pain.png";
 
+var ps = new Image();
+ps.src = "images/pain.png";
+
 var score=0;
 var sound = document.getElementById("sound");
-
 var canvas= document.getElementById('canvas');
 var ctx=canvas.getContext('2d');
 canvas.width=1000;
@@ -121,7 +123,7 @@ function animate (){
   quatrecollision();
   cinqcollision();
   sixcollision();
-}window.onload=setInterval(animate,1000/10);
+}var mika=window.onload=setInterval(animate,1000/10);
 // recouperation si clavier est appuyer et quand il est relacher//
 var keyclick = {};
   document.addEventListener ("keydown", function (e){
@@ -134,35 +136,34 @@ var keyclick = {};
   });
 // movement par clavier//
 function move (keyclick){
-      if (39 in keyclick){
+if (39 in keyclick){
       if( girl.frameX<9) girl.frameX++;
     else {girl.frameX=0;
     };
      girl.dx+=girl.speed;
     }
-  if (40 in keyclick){
+
+if (40 in keyclick){
     document.getElementById("up").style.display="inline";
   }else {
     document.getElementById("up").style.display="none";
   }
-  if (38 in keyclick){
-    document.getElementById("down").style.display="inline";
-  }else{
-   document.getElementById("down").style.display="none";
-   
-  }
-  
+if (38 in keyclick){
+  document.getElementById("down").style.display="inline";
+}else{
+  document.getElementById("down").style.display="none";
+}
+}
  
+
   function collision  (){
    if (girl.dx<=(obhtm.x+5)&& obhtm.x <=(girl.dx+10)){
       document.getElementById("ht").style.display="block";
       console.log('hit');
       score++;
       playsong();
-      function change(){
-      ctx.clearRect(100,300,75,150);
-      };
-  }change();
+      
+  }
   }
   function deuxcollision (){
      if (girl.dx<=(obcss.x+5)&& obcss.x <=(girl.dx+10)){
@@ -193,7 +194,7 @@ function move (keyclick){
   }
   }
   function sixcollision (){
-    if (girl.dx<=(obps.x+15)&&obps.x<=(girl.dx+15)){
+    if (girl.dx<=(obps.x+10)&&obps.x<=(girl.dx+15)){
       document.getElementById("ps").style.display="block";
       score++;
       playsong();
@@ -210,3 +211,4 @@ function move (keyclick){
    }
    }
 
+   

@@ -194,7 +194,7 @@ function troiscollision() {
   }
 }
 function quatrecollision() {
-  if (girl.dx <= obang.x + 5 && obang.x <= girl.dx + 15) {
+  if (girl.dx <= obang.x + 5 && obang.x <= girl.dx + 10) {
     document.getElementById('ang').style.display = 'block'
     score++
     baguettes.shift()
@@ -202,7 +202,7 @@ function quatrecollision() {
   }
 }
 function cinqcollision() {
-  if (girl.dx <= obvue.x + 10 && obvue.x <= girl.dx + 15) {
+  if (girl.dx <= obvue.x + 10 && obvue.x <= girl.dx + 10) {
     document.getElementById('vs').style.display = 'block'
     score++
     baguettes.shift()
@@ -210,7 +210,7 @@ function cinqcollision() {
   }
 }
 function sixcollision() {
-  if (girl.dx <= obps.x + 10 && obps.x <= girl.dx + 15) {
+  if (girl.dx <= obps.x + 10 && obps.x <= girl.dx + 10) {
     document.getElementById('ps').style.display = 'block'
     score++
     playsong()
